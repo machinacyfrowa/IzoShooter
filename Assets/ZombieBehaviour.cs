@@ -36,7 +36,7 @@ public class ZombieBehaviour : MonoBehaviour
                 transform.Translate(Vector3.up);
                 transform.Rotate(Vector3.right * -90);
                 GetComponent<BoxCollider>().enabled = false;
-                Destroy(transform.gameObject, 10);
+                Destroy(transform.gameObject, 5);
             }
         }
     }
