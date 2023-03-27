@@ -988,6 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePefab: {fileID: 4096911196761550909, guid: 1b773d2d56a20994f8d8d7ff481062a4, type: 3}
+  healPrefab: {fileID: 5813024743466410579, guid: aefc0fd28ed92714f99621dc54a92bac, type: 3}
 --- !u!4 &1817876113
 Transform:
   m_ObjectHideFlags: 0

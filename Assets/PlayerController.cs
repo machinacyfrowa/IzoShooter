@@ -59,6 +59,12 @@ public class PlayerController : MonoBehaviour
             Vector3 pushVector = collision.gameObject.transform.position - transform.position;
             collision.gameObject.GetComponent<Rigidbody>().AddForce(pushVector.normalized*5, ForceMode.Impulse);
         }
+        if(collision.gameObject.CompareTag("Heal"))
+        {
+            hp = 10;
+            hpScrollBar.size = hp / 10;
+            Destroy(collision.gameObject);
+        }
     }
     void Die()
     {
