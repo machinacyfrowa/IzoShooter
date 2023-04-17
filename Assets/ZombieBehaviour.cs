@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class ZombieBehaviour : MonoBehaviour
 {
     public float sightRange = 15f;
+    public float hearRange = 5f;
     int hp = 10;
 
     GameObject player;
     NavMeshAgent agent;
 
     private bool playerVisible = false;
+    private bool playerHearable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +44,24 @@ public class ZombieBehaviour : MonoBehaviour
                 playerVisible = false;
         }
 
+        //sprawdzamy czy "s³yszymy" gracza
+        //sprawdz czy w zasiêg s³uchu znajduje siê gracz
+        Collider[] heardObjects = Physics.OverlapSphere(transform.position, hearRange);
+        //sprawdz wszystkie po kolei i jeœli znajdziesz gracza ustaw flage
+        playerHearable = false;
+        foreach (Collider collider in heardObjects)
+        {
+            if (collider.gameObject.CompareTag("Player"))
+            {
+                //s³yszê gracza
+                playerHearable = true;
+            }
+        }
+
+
+
         //jeœli widzi gracza to idzie
-        agent.isStopped = !playerVisible;
+        agent.isStopped = !playerVisible && !playerHearable;
         if(hp > 0)
         {
             //transform.LookAt(player.transform.position);
