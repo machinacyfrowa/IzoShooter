@@ -90,7 +90,7 @@ public class ZombieBehaviour : MonoBehaviour
     private void Die()
     {
         agent.enabled = false;
-        transform.Translate(Vector3.up);
+        //transform.Translate(Vector3.up);
         transform.Rotate(transform.right * -90);
         GetComponent<BoxCollider>().enabled = false;
         Destroy(transform.gameObject, 5);
