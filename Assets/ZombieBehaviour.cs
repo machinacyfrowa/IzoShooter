@@ -27,6 +27,8 @@ public class ZombieBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hp <= 0)
+            return;
         //sprawdz czy "widzimy" gracza
         //jeœli twoje zombiaki maj¹wspó³rzêdn¹ y = 0 to musisz wzi¹æ poprawkê na wysokoœæ wzroku
         Vector3 raySource = transform.position + Vector3.up * 1.8f;
@@ -87,7 +89,7 @@ public class ZombieBehaviour : MonoBehaviour
     }
     private void Die()
     {
-        agent.speed = 0;
+        agent.enabled = false;
         transform.Translate(Vector3.up);
         transform.Rotate(transform.right * -90);
         GetComponent<BoxCollider>().enabled = false;
